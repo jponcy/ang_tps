@@ -10,6 +10,8 @@ import { GameActions } from './game-actions';
 })
 export class GameListComponent implements OnInit {
 
+  width = 300;
+
   entities: Game[] = [{
     id: 1,
     name: 'BattleBlock Theater',
@@ -55,7 +57,8 @@ export class GameListComponent implements OnInit {
     note: 9.8,
     category: 'Jeu de platform multijoueur'
   }, {
-    id: 4  ,
+    id: 4
+    ,
     name: 'BattleBlock Theater 2',
     description: 'Shipwrecked. Captured. Betrayed. Forced to perform for an audience of cats? '
       + 'Yes, all that and more when you unlock BattleBlock Theater!'
@@ -70,12 +73,21 @@ export class GameListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // this.width = document.querySelector('article').offsetWidth;
   }
 
   truncate(value: string) {
     const words = value.split(' ', 20);
 
     return words.join(' ') + (words.length > 20 ? + '...' : '');
+  }
+
+  sizeUp() {
+    this.width += 10;
+  }
+
+  sizeDown() {
+    this.width = Math.max(100, this.width - 10);
   }
 
   onActionClick(action: GameActions, game: Game) {
