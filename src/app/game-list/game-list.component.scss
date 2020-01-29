@@ -1,4 +1,4 @@
-$width: 400px;
+$width: 300px;
 
 section {
   display: flex;
@@ -10,7 +10,6 @@ article {
   width: $width;
   margin: 5px;
   border: 1px solid silver;
-
 
   header {
     display: flex;
@@ -24,6 +23,8 @@ article {
       width: $width;
     }
   }
+
+  &:hover { border: 1px solid blue; }
 
   footer { margin-top: 10px; }
 }

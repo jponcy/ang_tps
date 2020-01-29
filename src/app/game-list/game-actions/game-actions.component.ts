@@ -58,6 +58,7 @@ export class GameActionsComponent implements OnInit {
   onAction(action: GameActions, event: MouseEvent) {
     event.stopPropagation();
     event.preventDefault();
+    console.log(event)
     this.click.emit(action);
   }
 }
