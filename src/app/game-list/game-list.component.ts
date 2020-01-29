@@ -10,7 +10,8 @@ import { GameActions } from './game-actions';
 })
 export class GameListComponent implements OnInit {
 
-  width = 300;
+  defaultSize = 300;
+  width = this.defaultSize;
 
   entities: Game[] = [{
     id: 1,
@@ -88,6 +89,10 @@ export class GameListComponent implements OnInit {
 
   sizeDown() {
     this.width = Math.max(100, this.width - 10);
+  }
+
+  sizeReset() {
+    this.width = this.defaultSize;
   }
 
   onActionClick(action: GameActions, game: Game) {
