@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
+import { GameActions } from './../game-actions';
+
 @Component({
   selector: 'app-game-actions',
   templateUrl: './game-actions.component.html',
@@ -8,7 +10,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class GameActionsComponent implements OnInit {
 
   @Output()
-  private readonly click = new EventEmitter<string>();
+  private readonly click = new EventEmitter<GameActions>();
+
+  readonly follow = GameActions.FOLLOW;
+  readonly share = GameActions.SHARE;
+  readonly buy = GameActions.BUY;
 
   constructor() { }
 
@@ -32,11 +38,13 @@ export class GameActionsComponent implements OnInit {
   */
 
   // Solution 2
+  /*
   onAction(action: string, event: MouseEvent) {
     event.stopPropagation();
     event.preventDefault();
     this.click.emit(action);
   }
+  */
 
   // Solution 3
   /*
@@ -46,4 +54,10 @@ export class GameActionsComponent implements OnInit {
     this.click.emit(event.target.innerText);
   }
   */
+
+  onAction(action: GameActions, event: MouseEvent) {
+    event.stopPropagation();
+    event.preventDefault();
+    this.click.emit(action);
+  }
 }
